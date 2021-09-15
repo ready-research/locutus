@@ -44,7 +44,7 @@ module.exports = function strip_tags (input, allowed) { // eslint-disable-line c
   allowed = (((allowed || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('')
 
   const tags = /<\/?([a-z0-9]*)\b[^>]*>?/gi
-  const commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi
+  const commentsAndPhpTags = /<!--(?:(?!<!--)[\s\S])*?-->|<\?(?:php)?[\s\S]*?\?>/gi
 
   let after = _phpCastString(input)
   // removes tha '<' char at the end of the string to replicate PHP's behaviour
